@@ -1,0 +1,22 @@
+version: "3.7"
+services: 
+    app:
+        container_name: mina_compose_app
+        #restart: always
+        build: .
+        ports: 
+            - "3001:3001"
+        links:
+            - mongodb
+        environment:
+                dbMongo: mongodb
+    mongodb:
+        container_name: mongodb
+        image: mongo
+        ports: 
+            - "27017:27017"
+        #restart: always
+        environment:
+        #        MONGO_INITDB_ROOT_USERNAME: <admin-user>
+        #        MONGO_INITDB_ROOT_PASSWORD: <admin-password>
+          MONGO_INITDB_DATABASE: first_db
