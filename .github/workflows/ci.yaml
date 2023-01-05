@@ -31,6 +31,7 @@ jobs:
     #needs: [dockerBuildAndPush]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Updating Image tag to deploy
         run: |
             ls
