@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: argocdapp
+  namespace: argocd
+spec: 
+  destination: 
+    #namespace: guestbook
+    server: "https://kubernetes.default.svc"
+  project: default
+  source: 
+    path: gitops
+    repoURL: "https://github.com/MIna-Maher/blogsapp-nodejs-actions-argocd.git"
+    #repoURL: git@github.com:MIna-Maher/argocd-gitops-sample-app.git
+    targetRevision: main
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
