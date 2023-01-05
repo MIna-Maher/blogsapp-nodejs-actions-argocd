@@ -24,7 +24,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
-          push: false
+          push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/blogsapp:${{github.sha}}
   
   UpdatingImageTag:
