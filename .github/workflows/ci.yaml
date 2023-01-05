@@ -39,3 +39,7 @@ jobs:
             ls 
             sed -i -e "s/minamaherdocker\/blogsapp:.*/minamaherdocker\/blogsapp:${{github.sha}}/g" gitops/blogsApp.yaml
             cat gitops/blogsApp.yaml
+            git config --global user.name 'MIna-Maher'
+            git config --global user.email 'm.maher.eng2014@gmail.com'
+            git commit -am "Updating Image"
+            git push
