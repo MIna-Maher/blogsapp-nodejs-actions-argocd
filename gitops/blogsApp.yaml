@@ -139,7 +139,7 @@ spec:
     spec:
       containers:
         - name: blogs
-          image: minamaherdocker/blogsapp:finalready
+          image: minamaherdocker/blogsapp:minaargo
           resources:
             limits:
              cpu: 500m

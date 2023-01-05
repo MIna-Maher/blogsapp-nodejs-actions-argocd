@@ -37,7 +37,5 @@ jobs:
             ls
             pwd
             ls 
-            echo "Listing ${{ github.event.repository.name }} "
-            cd ${{ github.event.repository.name }}
-            ls
-            pwd
+            sed -i -e "s/minamaherdocker\/blogsapp:.*/minamaherdocker\/blogsapp:${{github.sha}}/g" gitops/blogsApp.yaml
+            cat gitops/blogsApp.yaml
