@@ -8,7 +8,7 @@ on:
     branches: [ main ]
 
 jobs:
-  docker:
+  dockerBuildAndPush:
     runs-on: ubuntu-latest
     steps:
       -
@@ -28,10 +28,12 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/blogsapp:${{github.sha}}
   
   UpdatingImageTag:
+    needs: [dockerBuildAndPush]
     runs-on: ubuntu-latest
     steps:
       - name: Updating Image tag to deploy
         run: |
-            echo "Listing..........."
+            echo "Listing ${{ github.event.repository.name }} "
+            cd ${{ github.event.repository.name }}
             ls
             pwd
