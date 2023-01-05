@@ -28,7 +28,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/blogsapp:${{github.sha}}
   
   UpdatingImageTag:
-    #needs: [dockerBuildAndPush]
+    needs: [dockerBuildAndPush]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
