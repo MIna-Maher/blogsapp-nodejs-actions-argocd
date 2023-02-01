@@ -3,9 +3,16 @@ name: CI-Stage
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'serviceB/**'
+      - 'gitops/argocd-app.yaml'
   pull_request:
     #branches: [ $default-branch ]
     branches: [ main ]
+    paths-ignore:
+      - 'serviceB/**'
+      - 'gitops/argocd-app.yaml'
+  
 
 jobs:
   dockerBuildAndPush:
