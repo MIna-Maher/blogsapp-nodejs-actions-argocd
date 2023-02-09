@@ -46,6 +46,10 @@ app.get('/about', (req, res) => {
     res.render('about', {title: 'About'});
 });
 
+pp.get('/serviceb/get', (req, res) => {
+    res.render('serviceb', {title: 'ServiceB'});
+});
+
 //redirects
 app.get('/about-me', (req, res) => {
     res.redirect('/about');

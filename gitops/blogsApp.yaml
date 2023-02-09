@@ -18,6 +18,15 @@ metadata:
     name: backend
 ---
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: serviceb
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
+  labels:
+    name: serviceb
+---
+apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: mongo-data-pv
@@ -198,5 +207,52 @@ spec:
   selector:
     app: blogs
   type: NodePort
+status:
+  loadBalancer: {}
+
+######################################ServiceB##########################
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: serviceb
+  namespace: serviceb
+  labels:
+    app: serviceb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serviceb
+  template:
+    metadata:
+      labels:
+        app: serviceb
+    spec:
+      containers:
+        - name: serviceb
+          image: minamaherdocker/blogsapp-serviceb:v1
+          resources:
+            limits:
+             cpu: 500m
+            requests:
+             cpu: 200m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: serviceb
+  name: serviceb-svc
+  namespace: serviceb
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+    #nodePort: 32001
+  selector:
+    app: serviceb
+  #type: NodePort
 status:
   loadBalancer: {}
