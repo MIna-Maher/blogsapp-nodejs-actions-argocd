@@ -55,7 +55,8 @@ app.get('/serviceb/getusers', (req, res) => {
     request('http://serviceb-svc.serviceb:80/users', function (error, response, body) {
     console.log('error:', error); // Print the error if one occurred and handle it
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    res.send(body)
+    //res.send(body)
+    res.render('getusers', {title: 'All GetUsers', users: body });
   });});
 
 //redirects

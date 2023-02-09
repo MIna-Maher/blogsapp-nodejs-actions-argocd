@@ -1,0 +1,29 @@
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+<body>
+<!-- using ejs tags  to view dynamic content-->
+  <% const name ="Mina"  %>
+
+  <%- include('./partials/nav.ejs') %>
+    
+    <div class="blogs contents">
+       <h2>all Users from serviceB</h2>
+
+       <% if (users.length > 0 ) { %>
+        <% users.forEach(user => { %>
+         <a>
+         <p class="snippet"> <%= user%> </p>
+         </a>
+       <% }) %>
+        <% } else { %>
+         <p> There are no Blogs to display... </p>
+        <%} %>
+
+       
+    
+    </div>
+    <%- include('./partials/footer.ejs') %>
+
+</body>
+</html>
