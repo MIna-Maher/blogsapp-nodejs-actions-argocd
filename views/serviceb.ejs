@@ -8,12 +8,20 @@
        <p><strong>Service B is Just simple python flask app with get endpojnt as POC of microservice app.<br>
         </p>
     
-        class="create-blog">
-        <form action="http://serviceb-svc.serviceb">
-            <input type="submit" value="Get Users" />
-        </form>
+        <button onclick="myJavascriptFunction()">GET USERS</button>
     </div>
     <%- include('./partials/footer.ejs') %>
+
+    <script>
+        function myJavascriptFunction() {
+          // Your javascript code to bring data from database. 
+          var xmlHttp = new XMLHttpRequest();
+          xmlHttp.open( "GET", "serviceb-svc.serviceb:80/users", false ); // false for synchronous request
+          xmlHttp.send( null );
+          return xmlHttp.responseText;
+        }
+    </script>
+
 
 </body>
 </html>
