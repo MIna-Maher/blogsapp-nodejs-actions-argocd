@@ -1,5 +1,6 @@
 const blogRoute = require('./routes/routesBlogs');
 const express = require('express');
+const request = require('request');
 //morgan http requester logger.
 //const morgan = require('morgan');
 const mongoose = require('mongoose'); //Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks.
@@ -49,6 +50,13 @@ app.get('/about', (req, res) => {
 app.get('/serviceb/get', (req, res) => {
     res.render('serviceb', {title: 'ServiceB'});
 });
+
+app.get('serviceb/getusers', (req, res) => {
+    request('http://serviceb-svc.serviceb:80/users', function (error, response, body) {
+    console.log('error:', error); // Print the error if one occurred and handle it
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    res.send(body)
+  });});
 
 //redirects
 app.get('/about-me', (req, res) => {
