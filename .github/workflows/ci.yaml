@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - 'serviceB/**'
       - 'gitops/argocd-app.yaml'
+      - '.gitignore'
   pull_request:
     #branches: [ $default-branch ]
     branches: [ main ]
