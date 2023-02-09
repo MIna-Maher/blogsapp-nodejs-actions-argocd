@@ -162,7 +162,7 @@ spec:
     spec:
       containers:
         - name: blogs
-          image: minamaherdocker/blogsapp:53ec2fd1d877311ca82cf736f496b4a98c116a1c
+          image: minamaherdocker/blogsapp:eddc25173be2c9d28c8306d3d5d41a43ab8cf3cf
           resources:
             limits:
              cpu: 500m
